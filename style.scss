@@ -1,0 +1,48 @@
+@import "style2.css";
+// @mixin circle {
+//     width: 200px;
+//     height: 200px;
+//     background: red;
+//     border-radius: 50%;
+// }
+
+@mixin circle($width,$height,$color) {
+    width: $width;
+    
+    height: $height;
+    
+    background: $color;
+    
+
+    border-radius: 50%;
+}
+
+$font-stack :Helvetica, sans-serif;
+$primary-color : #ff0000;
+
+
+body h1 {
+    font : 100% $font-stack;
+    color : $primary-color;
+}
+
+.circle-red {
+
+   @include circle (350px,350px,red);
+}
+.circle-green {
+
+   @include circle (200px,200px,green);
+}
+
+
+// div {
+
+//    position: relative;
+// }
+// p {
+//     position: absolute;
+//     top:20px;
+//     left:300px;
+//     @include circle;
+// }

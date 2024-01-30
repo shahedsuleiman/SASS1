@@ -1,0 +1,19 @@
+@import "style2.css";
+body h1 {
+  font: 100% Helvetica, sans-serif;
+  color: #ff0000;
+}
+
+.circle-red {
+  width: 350px;
+  height: 350px;
+  background: red;
+  border-radius: 50%;
+}
+
+.circle-green {
+  width: 200px;
+  height: 200px;
+  background: green;
+  border-radius: 50%;
+}/*# sourceMappingURL=style.css.map */

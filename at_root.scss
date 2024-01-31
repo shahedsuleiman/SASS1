@@ -1,0 +1,112 @@
+//The @at-root will move and restart the selector out of its initial nesting scope, enabling us to add the variant selector to the parent.
+// syntax: @at-root <selector> {...}
+
+.accordion {
+  //suffixes
+  max-width: 600px;
+  margin: 4rem auto;
+  width: 90%;
+  font-family: "Raleway", sans-serif;
+  background: #f4f4f4;
+
+  &__copy {
+    display: none;
+    padding: 1rem 1.5rem 2rem 1.5rem;
+    color: gray;
+    line-height: 1.6;
+    font-size: 14px;
+    font-weight: 500;
+
+    &--open {
+      display: block;
+    }
+  }
+}
+
+h1 {
+  color: #a52a2a;
+  background-color: #deb887;
+
+//   @at-root {
+//     h2 {
+//       font-size: 22px;
+//       font-style: italic;
+//       color: #96ff1e;
+//     }
+//   }
+}
+
+.myclass {
+  background-color: grey;
+  height: 100px;
+  margin: 50px;
+  width: 100px;
+
+  @at-root {
+    @keyframes fade {
+      from {
+        transform: scale(1.5);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &:hover {
+    animation: fade 5s infinite;
+  }
+}
+
+// media
+// h2 {
+//   @extend .myclass;
+//   @extend h1;
+// }
+
+.style {
+  width: 900px;
+
+  @media screen and (orientation: portrait) {
+    width: 500px;
+    margin-left: 120px;
+  }
+
+  @extend .myclass;
+}
+
+//placeholders 
+
+/* Extend is working in exactly the same way 
+but because the placeholder is only 
+used once in the document, it doesn’t add any
+additional selectors where they are not required. */
+
+
+%button {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  color: #fff;
+}
+
+.button-blue {
+    @extend %button;
+    background: skyblue;
+}
+
+.button-red {
+    @extend %button;
+    background: red;
+}
+
+.button-green {
+    @extend %button;
+    background: rgb(151, 194, 86);
+}
+
+h2 {
+    // color: if( 1 + 1 == 2 , green , red);
+    @if 1+ 1 == 2 {color: #00ff22;} 
+    @else {color: #ff0000;} 
+ }

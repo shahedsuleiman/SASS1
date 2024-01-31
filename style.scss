@@ -1,10 +1,3 @@
-@import "style2.css";
-// @mixin circle {
-//     width: 200px;
-//     height: 200px;
-//     background: red;
-//     border-radius: 50%;
-// }
 
 @mixin circle($width,$height,$color) {
     width: $width;
@@ -35,14 +28,23 @@ body h1 {
    @include circle (200px,200px,green);
 }
 
+@mixin prefix($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+      -#{$prefix}-#{$property}: $value;
+    }
+    #{$property}: $value;
+  }
+  
+  .gray {
+    @include prefix(filter, grayscale(10%), moz webkit);
+  }
 
-// div {
 
-//    position: relative;
-// }
-// p {
-//     position: absolute;
-//     top:20px;
-//     left:300px;
-//     @include circle;
-// }
+//through is like 1<=4
+@for $i from 1 through 4 { // same for if we replaced through with to but it wont take the last p4 cuz its like 1<4
+  .p#{$i} {
+    padding-left : $i * 10px;
+  }
+}
+
+// for the next day : @each , @while directives and mixins directives and functions directives 

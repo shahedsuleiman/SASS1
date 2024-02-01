@@ -14,10 +14,10 @@ $font-stack :Helvetica, sans-serif;
 $primary-color : #ff0000;
 
 
-body h1 {
-    font : 100% $font-stack;
-    color : $primary-color;
-}
+// body h1 {
+//     font : 100% $font-stack;
+//     color : $primary-color;
+// }
 
 .circle-red {
 
@@ -28,23 +28,116 @@ body h1 {
    @include circle (200px,200px,green);
 }
 
-@mixin prefix($property, $value, $prefixes) {
-    @each $prefix in $prefixes {
-      -#{$prefix}-#{$property}: $value;
-    }
-    #{$property}: $value;
-  }
+// @mixin prefix($property, $value, $prefixes) {
+//     @each $prefix in $prefixes {
+//       -#{$prefix}-#{$property}: $value;
+//     }
+//     #{$property}: $value;
+//   }
   
-  .gray {
-    @include prefix(filter, grayscale(10%), moz webkit);
-  }
+//   .gray {
+//     @include prefix(filter, grayscale(10%), moz webkit);
+//   }
 
 
 //through is like 1<=4
-@for $i from 1 through 4 { // same for if we replaced through with to but it wont take the last p4 cuz its like 1<4
-  .p#{$i} {
-    padding-left : $i * 10px;
-  }
+// @for $i from 1 through 4 { // same for if we replaced through with to but it wont take the last p4 cuz its like 1<4
+//   .p#{$i} {
+//     padding-left : $i * 10px;
+//   }
+// }
+
+// @each $color in red,green,yellow,blue {
+//   .p_#{$color} {
+//     background-color : #{$color};
+//   }
+// }
+
+// @each $color, $border in (aqua, dotted), (red, solid), (green, double){
+//   .#{$color}{
+//     background-color : $color;
+//       border: $border;
+//   }
+
+
+// }
+
+// @each $header, $color in (h1: red, h2: green, h3: blue) {
+//   #{$header} {
+//     color : $color;
+//   }
+// }
+
+// $icons : 
+// "eye" "\f112" 12px,
+// "start" "\f12e" 16px,
+// "stop" "\f12f" 10px;
+
+
+// @each $name, $glyph, $size in $icons {
+//   .icon-#{$name}:before {
+//      display:inline-block;
+//      font-family: "Icon Font";
+//      content: $glyph;
+//      font-size : $size;
+//   }
+// }
+
+// $i: 50;
+// @while $i > 0 {
+//    .paddding-#{$i} { padding-left: 1px * $i; }
+//    $i: $i - 10;
+// }
+
+
+// @mixin hi {
+//   .hello {
+//     background-color :pink;
+//   }
+//   h2{
+//     color:grey;
+//   }
+//   h3{
+//     color:rgb(255, 0, 221);
+//   }
+//   li{
+//     color:rgb(236, 105, 219);
+//   }
+// }
+// @include hi;
+
+// .sh{
+//   @include hi;
+// }
+
+
+// @mixin design($var) {
+//   color: $var;
+// }
+
+// $values: red, blue, green;
+// // @each $i in $values {
+// .temp {
+//   @include design($values...);
+// }
+// // }
+
+
+@mixin element {
+  @content;
 }
 
-// for the next day : @each , @while directives and mixins directives and functions directives 
+.blockk {
+  @include element {background-color: green;}
+}
+
+
+
+$first-width :5px;
+$second-width : 5px;
+
+@function adjust_width($n){
+  @return $n * $first-width + ($n - 1) * $second-width;
+}
+
+#set_width {padding-left : adjust_width(10)}
